@@ -6,7 +6,7 @@ Plugin Name:  jQuery Masonry Image Gallery
 Plugin URI:   http://willrees.com/2013/02/jquery-masonry-and-native-wordpress-image-galleries/
 Description:  Injects jQuery Masonry for native WordPress image galleries. jQuery Masonry is included in WordPress, use it for image galleries. Works best on galleries <strong>without</strong> 1:1 scaled thumbnails.
 Version:      2.2
-Author:       Will Rees
+Author:       Will Rees. Custom changes Morten Christensen
 Author URI:   http://willrees.com
 License:
 
@@ -58,6 +58,7 @@ if (is_admin()) {
 				<style>
 
 					#jmig_option_item_margin {width: 2em !important;}
+					#jmig_option_image_width {width: 3em !important;}
 
 				</style>
 
@@ -84,6 +85,41 @@ if (is_admin()) {
 										</td>
 
 								</tr>
+								
+								<!-- HighHeaven custom start -->
+								
+								<tr valign="top">
+
+									<th scope="row"><?php _e( 'Gallery Image Width (in pixels)', 'jmig_plugin' ); ?></th>
+
+										<td>
+
+											<input id="jmig_option_image_width" class="regular-text" type="text" name="jmig_option[image_width]" maxlength="3" value="<?php esc_attr_e( $jmig_options['image_width'] ); ?>" />
+
+											<label class="description" for="jmig_option[image_width]"><?php _e( 'px. Please DO NOT enter \'px\'. Just enter the number.', 'jmig_plugin' ); ?></label>
+
+										</td>
+										
+										
+
+								</tr>
+								
+								<tr valign="top">
+
+									<th scope="row"><?php _e( 'Mobile Image Width (in pixels)', 'jmig_plugin' ); ?></th>
+
+																		
+										<td>
+
+											<input id="jmig_option_image_width" class="regular-text" type="text" name="jmig_option[mobile_image_width]" maxlength="3" value="<?php esc_attr_e( $jmig_options['mobile_image_width'] ); ?>" />
+
+											<label class="description" for="jmig_option[mobile_image_width]"><?php _e( 'px. Please DO NOT enter \'px\'. Just enter the number.', 'jmig_plugin' ); ?></label>
+
+										</td>
+
+								</tr>
+								
+								<!-- HighHeaven custom end -->
 
 							</table>
 
@@ -139,6 +175,10 @@ if (is_admin()) {
 				$jmig_options['no_added_css'] = ( $jmig_options['no_added_css'] == 1 ? 1 : 0 );
 
 			$jmig_options['item_margin'] = wp_filter_nohtml_kses( $jmig_options['item_margin'] );
+			
+			// HighHeaven custom
+			$jmig_options['image_width'] = wp_filter_nohtml_kses( $jmig_options['image_width'] );
+			$jmig_options['mobile_image_width'] = wp_filter_nohtml_kses( $jmig_options['mobile_image_width'] );
 
 				return $input;
 		}

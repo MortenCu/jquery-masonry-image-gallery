@@ -8,9 +8,41 @@
         margin: 0 !important;
         line-height: 1 !important;
         text-decoration: none !important;
-        display: inline !important;
+        /*display: inline !important;*/
         border-radius: 0 !important;
         box-shadow: none !important;
         vertical-align: middle !important;
     }
 .gallery-caption { line-height: 125% !important;}
+
+.wp-caption{
+   position:relative;
+   
+}
+
+.wp-caption img,
+.wp-caption-text{
+   
+	display: none;
+    font-family:inherit;
+    height: auto;
+    padding-top: 120px;
+	padding-bottom: 120px;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    z-index: 100;
+	background-color:gray;
+	
+	pointer-events: none;
+	
+}
+.wp-caption img{
+   top:30px;
+}
+
+.wp-caption-text {
+   top:0;
+   color:white;
+}

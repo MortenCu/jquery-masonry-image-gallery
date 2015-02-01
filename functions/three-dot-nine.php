@@ -40,11 +40,13 @@
 
 									if(!isset($jmig_options['fixed_layout'])) {
 
-										$thumbnail_width = get_option( 'thumbnail_size_w' );
-										$custom_css_width = '.gallery-item, .gallery-item img, gallery-item a { width: ' . $thumbnail_width . 'px !important; max-width: ' . $thumbnail_width . 'px !important; min-width: ' . $thumbnail_width . 'px !important; }';
-
-											wp_add_inline_style( 'jmig_stylesheet', $custom_css_width );
-
+										$image_width = $jmig_options['image_width'];//get_option( 'thumbnail_size_w' );
+										$custom_css_width = '.gallery-item, .gallery-item img, gallery-item a { width: ' . $image_width . 'px !important; max-width: ' . $image_width . 'px !important; min-width: ' . $image_width . 'px !important; }';
+										wp_add_inline_style( 'jmig_stylesheet', $custom_css_width );
+										
+										$image_width = $jmig_options['mobile_image_width'];//get_option( 'thumbnail_size_w' );
+										$mobile_custom_css_width = '@media screen and (max-width: 767px) {.gallery-item, .gallery-item img, gallery-item a { width: ' . $image_width . 'px !important; max-width: ' . $image_width . 'px !important; min-width: ' . $image_width . 'px !important; }}';	
+										wp_add_inline_style( 'jmig_stylesheet', $mobile_custom_css_width );
 									}
 
 										if (!isset($jmig_options['no_added_css'])) {
